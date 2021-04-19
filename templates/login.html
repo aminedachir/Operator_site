@@ -10,7 +10,10 @@
 			<br><br><br><br>
 			<h1> Sign In </h1>
 				{{form.firstname(size=30, placeholder="First name")}}
-				{{form.lastname(size=30, placeholder="Last name")}} 
+				{% for error in form.firstname.errors %}
+					<span style="color: red";> {{error}} </span>
+				{% endfor %}
+				{{form.lastname(size=30, placeholder="Last name")}}
 				<br><br>
 				{{form.password(size=30, placeholder="Password")}}
 				{{form.confirm_password(size=30, placeholder="Confirm Password")}}
