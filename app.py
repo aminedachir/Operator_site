@@ -1,4 +1,4 @@
-from flask import Flask , render_template
+from flask import Flask , render_template, redirect
 from forms import loginForm
 
 app = Flask(__name__)
@@ -9,10 +9,16 @@ app.config['SECRET_KEY'] = '1jhghml'
 def home():
 	return "<center><h1>Welcome</h1></center>"
 
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/login')
 def log():
+	return render_template ('login.html')
+
+@app.route('/signin', methods=['GET', 'POST'])
+def sign():
 	form = loginForm()
-	return render_template('login.html', form = form, title = 'SignIn')
+	if form.validate_on_submit():
+		return redirect ('login')
+	return render_template('signin.html', form = form, title = 'SignIn')
 
 if __name__ == '__main__':
 	app.run()

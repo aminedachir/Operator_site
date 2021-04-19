@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	<style type="text/css">
+		h1{color: green;}
+		form{height: 100px;}
+	</style>
+	<center>
+		<form action="" method="POST">
+			{{form.hidden_tag ()}}
+			<br><br><br><br>
+			<h1> Sign In </h1>
+				{{form.firstname(size=30, placeholder="First name")}}
+				{% for error in form.firstname.errors %}
+					<span style="color: red";> {{error}} </span>
+				{% endfor %}
+				{{form.lastname(size=30, placeholder="Last name")}}
+				<br><br>
+				{{form.password(size=30, placeholder="Password")}}
+				{{form.confirm_password(size=30, placeholder="Confirm Password")}}
+				<br><br>
+				{{form.email(size=30, placeholder="e-mail")}}
+				{{form.confirm_email(size=30, placeholder="e-mail")}}
+				<br><br>
+				{{form.acces ()}}
+		</form>
+	</center>
+{% endblock %}
