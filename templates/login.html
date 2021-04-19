@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	<style type="text/css">
+		h1{
+			color: green;
+		}
+	</style>
+	<center>
+		<form action="" method="POST">
+			{{form.hidden_tag ()}}
+			<br><br><br><br><br><br>
+			<h1> Sign In </h1>
+				<h3>{{form.firstname.label}} </h3>
+				{{form.firstname(size=40)}} 
+				<h3>{{form.lastname.label}}</h3> 
+				{{form.lastname(size=40)}}
+				<h3>{{form.password.label}}</h3> 
+				{{form.password(size=40)}} <br><br>
+				{{form.acces ()}}
+		</form>
+	</center>
+{% endblock %}
