@@ -12,7 +12,7 @@ migrate = Migrate(db, app)
 
 @app.route('/')
 def home():
-	return "<center><h1>Welcome</h1></center>"
+	return render_template('welcome.html')
 @app.route('/login', methods=['GET', 'POST'])
 def log():
 	form = loginForm()
