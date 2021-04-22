@@ -14,7 +14,7 @@ migrate = Migrate(db, app)
 def home():
 	return render_template('welcome.html')
 
-app.route('/choose')
+@app.route('/choose')
 def choose():
 	return render_template('choose.html')	
 
@@ -30,7 +30,7 @@ def division():
 def log():
 	form = loginForm()
 	if form.validate_on_submit():
-		return redirect('choose')
+		return redirect ('choose')
 	return render_template ('login.html', form = form)
 
 @app.route('/signin', methods=['GET', 'POST'])
