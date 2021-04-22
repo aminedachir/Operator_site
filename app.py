@@ -13,11 +13,24 @@ migrate = Migrate(db, app)
 @app.route('/')
 def home():
 	return render_template('welcome.html')
+
+app.route('/choose')
+def choose():
+	return render_template('choose.html')	
+
+@app.route('/multiplication')
+def multiplication():
+	return render_template('multiplication.html')
+
+@app.route('/division')
+def division():
+	return render_template('division.html')
+
 @app.route('/login', methods=['GET', 'POST'])
 def log():
 	form = loginForm()
-	if validate_on_submit():
-		return render_template('choose.html')
+	if form.validate_on_submit():
+		return redirect('choose')
 	return render_template ('login.html', form = form)
 
 @app.route('/signin', methods=['GET', 'POST'])
