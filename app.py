@@ -16,6 +16,8 @@ def home():
 @app.route('/login', methods=['GET', 'POST'])
 def log():
 	form = loginForm()
+	if validate_on_submit():
+		
 	return render_template ('login.html', form = form)
 
 @app.route('/signin', methods=['GET', 'POST'])
@@ -23,8 +25,6 @@ def sign():
 	form = loginForm()
 	if form.validate_on_submit():
 		return redirect ('login')
-		if (request.user['password'] == request.user['confirm_password']):
-			return redirect('/')
 		u = models.user(firstname = request.user['firstname'])
 		db.session.add(u)
 	return render_template('signin.html', form = form, title = 'SignIn')
