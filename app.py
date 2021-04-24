@@ -2,13 +2,11 @@ from flask import Flask , render_template, redirect, request
 from forms import loginForm
 from flask_sqlalchemy import SQLAlchemy 
 from flask_migrate import Migrate 
-from config import config
+from config import Config
 
 app = Flask(__name__)
 app.config.from_object('config')
 app.config['SECRET_KEY'] = '1jhghml'
-db = SQLAlchemy(app)
-migrate = Migrate(db, app)
 
 @app.route('/')
 def home():
@@ -31,7 +29,7 @@ def log():
 	form = loginForm()
 	if form.validate_on_submit():
 		return redirect ('choose')
-	return render_template ('login.html', form = form)
+	return render_template ('login.html', form = form) 
 
 @app.route('/signin', methods=['GET', 'POST'])
 def sign():
@@ -43,4 +41,4 @@ def sign():
 	return render_template('signin.html', form = form, title = 'SignIn')
 
 if __name__ == '__main__':
-	app.run()
+	app.run(port = app.config['PORT'], debug = app.config['DEBUG'])
