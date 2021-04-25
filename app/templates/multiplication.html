@@ -1,0 +1,27 @@
+{%extends 'base.html'%}
+{% block body%}
+<script>
+    window.onload = pageon;
+    var c = 0;
+    function pageon(){
+        for (i=0;i<14;i++){
+            a = Math.floor(Math.random()*10)+2;
+            b = Math.floor(Math.random()*10)+1;
+            number = prompt(a+""+"*"+""+b);
+            if (number == a*b){
+                confirm("True");
+                c++;
+            }
+            else {
+                confirm("False")
+            }
+        }
+        if (c>12){
+            confirm("You win")
+        }
+        else{
+            confirm("You Lost")
+        }
+    }
+</script>
+{% endblock %}
